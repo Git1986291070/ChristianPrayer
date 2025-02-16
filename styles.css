@@ -1,0 +1,309 @@
+:root {
+    --gold: #d4af37;
+    --deep-blue: #0f172a;
+    --light-bg: rgba(255, 255, 255, 0.1);
+    /* 新增心情按钮颜色变量 */
+    --peace-color: #7395ae;
+    --joy-color: #ffc300;
+    --hope-color: #66ff66;
+    --strength-color: #ff6666;
+    --faith-color: #9966ff;
+    --love-color: #ff66b2;
+    --patience-color: #ff9966;
+    --gratitude-color: #00cc99;
+}
+
+/* 响应式布局优化 */
+body {
+    margin: 0;
+    padding: 2em;
+    background: linear-gradient(160deg, var(--deep-blue) 30%, #1e293b 100%);
+    font-family: 'Noto Serif SC', serif;
+    color: white;
+    min-height: 100vh;
+}
+
+#content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 30px;
+    padding: 20px;
+}
+
+/* 使图片和经文卡片的尺寸一致 */
+.prayer-image,
+.verse-card {
+    width: 100%; /* 宽度设为 100% */
+    height: auto; /* 高度自适应 */
+    box-sizing: border-box; /* 保证边框和内边距不影响实际尺寸 */
+}
+
+/* 图片加载优化 */
+.prayer-image {
+    background: linear-gradient(45deg, #2d3748 25%, #334155 100%);
+    position: relative;
+    max-width: 100%;
+}
+/* 经文显示优化 */
+.verse-card {
+    padding: 1rem;
+    background: var(--light-bg);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    line-height: 1.8;
+}
+
+.verse-reference {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+/* 心情按钮布局优化 */
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+/* 美化心情按钮 */
+.mood-btn {
+    padding: 1rem;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2d3748 0%, #334155 100%);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* 新增样式 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.mood-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left 0.3s ease;
+}
+
+.mood-btn:hover::before {
+    left: 0;
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 为每种心情按钮添加特定颜色 */
+.mood-btn.peace {
+    background: var(--peace-color);
+}
+
+.mood-btn.joy {
+    background: var(--joy-color);
+}
+
+.mood-btn.hope {
+    background: var(--hope-color);
+}
+
+.mood-btn.strength {
+    background: var(--strength-color);
+}
+
+.mood-btn.faith {
+    background: var(--faith-color);
+}
+
+.mood-btn.love {
+    background: var(--love-color);
+}
+
+.mood-btn.patience {
+    background: var(--patience-color);
+}
+
+.mood-btn.gratitude {
+    background: var(--gratitude-color);
+}
+
+/* 聊天窗口优化 */
+#chat-window {
+    background: var(--light-bg);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+}
+
+#chat-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#chat-messages {
+    height: 30vh;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.message.user {
+    background: rgba(25, 195, 125, 0.2);
+    text-align: right;
+}
+
+.message.bot {
+    background: rgba(212, 175, 55, 0.2);
+    text-align: left;
+}
+
+#chat-input {
+    display: flex;
+    align-items: center;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-right: 10px;
+}
+
+#send-button {
+    background: #19c37d !important;
+    padding: 12px 30px !important;
+    font-size: 1.1rem !important;
+    box-shadow: 0 4px 15px rgba(25, 195, 125, 0.4);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#send-button:hover {
+    background: #15a367 !important;
+    box-shadow: 0 6px 20px rgba(25, 195, 125, 0.5);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    #content {
+        padding: 10px;
+        grid-gap: 20px;
+    }
+
+    .prayer-image {
+        height: auto; /* 自适应高度 */
+        min-height: auto; /* 取消最小高度限制 */
+        max-height: 200px; /* 限制最大高度 */
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* 调整按钮网格布局 */
+    }
+
+    .mood-btn {
+        min-height: 60px; /* 减小按钮最小高度 */
+        font-size: 0.8rem; /* 减小按钮字体大小 */
+        padding: 0.8rem; /* 减小按钮内边距 */
+    }
+
+    #user-input {
+        width: 100% !important; /* 让输入框占满宽度 */
+    }
+
+    #send-button {
+        padding: 10px 20px !important; /* 调整按钮内边距 */
+        font-size: 1rem !important; /* 调整按钮字体大小 */
+    }
+
+    #chat-messages {
+        height: 200px; /* 调整聊天消息区域高度 */
+    }
+}
+
+/* 更大屏幕的优化 */
+@media (min-width: 1200px) {
+    #content {
+        max-width: 1400px;
+    }
+
+
+/* 子页面样式 */
+.subpage-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+}
+
+.home-button {
+     display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--gold); /* 修改背景颜色 */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+        transition: box-shadow 0.3s ease; /* 添加过渡效果 */
+}
+
+.home-button:hover {
+    background-color: #b3902e; /* 鼠标悬停时的背景颜色 */
+}
+
+.subpage-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+#mood-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+}

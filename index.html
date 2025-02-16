@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daily Blessing</title>
+    <!-- 预加载优化 -->
+    <link rel="preconnect" href="https://source.unsplash.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="content">
+        <img class="prayer-image" id="image1" loading="lazy" alt="Prayer Image">
+        <div class="verse-card">
+            <div id="verse-text"></div>
+            <span class="verse-reference" id="verse-reference"></span>
+        </div>
+        <!--img class="prayer-image" id="image2" loading="lazy" alt="Prayer Image"-->
+        <div class="mood-grid" id="buttons">
+            <button onclick="redirectToPage('peace')">Peace</button>
+            <button onclick="redirectToPage('joy')">Joy</button>
+            <button onclick="redirectToPage('hope')">Hope</button>
+            <button onclick="redirectToPage('strength')">Strength</button>
+            <button onclick="redirectToPage('faith')">Faith</button>
+            <button onclick="redirectToPage('love')">Love</button>
+            <button onclick="redirectToPage('patience')">Patience</button>
+            <button onclick="redirectToPage('gratitude')">Gratitude</button>
+        </div>
+        <div id="chat-window">
+            <div id="chat-header">
+                <h3>Christian Prayer Chat</h3>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="chat-input">
+                <input type="text" id="user-input" placeholder="Ask me about prayers...">
+                <button id="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function redirectToPage(mood) {
+            window.location.href = mood + '.html';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

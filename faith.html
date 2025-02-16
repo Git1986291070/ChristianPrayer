@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith - My Daily Blessing</title>
+    <!-- 预加载优化 -->
+    <link rel="preconnect" href="https://source.unsplash.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="subpage-container">
+        <img class="prayer-image" id="image1" loading="lazy" alt="Prayer Image">
+        <div class="verse-card">
+            <div id="verse-text"></div>
+            <span class="verse-reference" id="verse-reference"></span>
+        </div>
+        <a href="index.html" class="home-button">Back to Home</a>
+    </div>
+    <script>
+        // 图片加载优化方案
+        const UNSPLASH_ACCESS_KEY = 'r6T869agDialqiZyfj0S9g6FjdaW2bYVtMWgiKdEMu0'; // 你的API密钥
+
+        // 使用正式API端点获取图片
+        async function getChristianImage(query) {
+            try {
+                const apiUrl = `https://api.unsplash.com/photos/random?query=${query}+christian&orientation=landscape&client_id=${UNSPLASH_ACCESS_KEY}`;
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                return data.urls.regular;
+            } catch (error) {
+                console.error('图片加载失败:', error);
+                return 'fallback-image.jpg'; // 备用图片路径
+            }
+        }
+
+        // 加载内容
+        async function loadContent() {
+            try {
+                const imageUrl = await getChristianImage('faith'); // 这里的参数与页面主题相关
+                document.getElementById('image1').src = imageUrl;
+
+                const bibleResponse = await fetch('https://bible-api.com/?random=verse');
+                const bibleData = await bibleResponse.json();
+                document.getElementById('verse-text').textContent = bibleData.text;
+                document.getElementById('verse-reference').textContent =
+                    `${bibleData.reference} (${bibleData.translation_name})`;
+            } catch (error) {
+                console.error('Load Fail:', error);
+                document.getElementById('verse-text').textContent = "Daily scripture: Rest and know that I am God! (Psalm 46:10)";
+            }
+        }
+
+        // 初始化加载
+        loadContent();
+    </script>
+</body>
+
+</html>
